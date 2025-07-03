@@ -56,8 +56,8 @@ start_time = 0
 obstacle_rect_list = []
 fly_surface = pygame.image.load('fly.png').convert_alpha()
 fly_surface= pygame.transform.scale(fly_surface, (60, 70))
-high_score_val = 0
-
+with open('gamestats.txt', 'r') as high_score_file:
+    high_score_val = int(high_score_file.readline())
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:                       
@@ -99,6 +99,8 @@ while True:
         if game_active == False:
             score = display_score()
             high_score_val = max(score, high_score_val)
+            with open('gamestats.txt', 'w') as high_score_file:
+              high_score_file.write(str(high_score_val))
     else:
         obstacle_rect_list.clear()
         player_rect.topleft = (40, 280)
@@ -106,7 +108,7 @@ while True:
         score_message = test_font.render(f'Your score:{score}', False, (111, 196, 169))
         score_message_rect = score_message.get_rect(center = (400, 500))
         high_score = test_font.render(f'High score :{high_score_val}',False, (111, 196, 169) )
-        high_score_rect = high_score.get_rect(topleft = (20, 100)) 
+        high_score_rect = high_score.get_rect(topleft = (10, 25)) 
         start_time = (pygame.time.get_ticks())//1000 # See what it does is start_time is pygame.time.get_ticks but it tells till how much time 
         # our program has run initially both are at same position but slowly it changes and we get this
         screen.fill((94, 129, 162))
@@ -133,3 +135,5 @@ while True:
     #    print( pygame.mouse.get_pressed())
     #    print('collision')
    # pygame.draw.line(screen, 'Gold', (0,0),pygame.mouse.get_pos(), 10) This will help us to create a line that follows 
+   # Further I have to add various difficulties and also increasing difficulty and add different characters if possible and various buttons
+   
