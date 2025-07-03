@@ -136,4 +136,10 @@ while True:
     #    print('collision')
    # pygame.draw.line(screen, 'Gold', (0,0),pygame.mouse.get_pos(), 10) This will help us to create a line that follows 
    # Further I have to add various difficulties and also increasing difficulty and add different characters if possible and various buttons
+   # Adding levels to the game is another feature to be added and also use of sprite classes is also recommended and use copyright free characters
+#    Save number of games played
+
+# Show average score
+
+# Track personal bests per difficulty
    
